@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('recruiters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $
+            $table->string('agency');
+            $table->string('contact_method')->nullable();
+            $table->string('email_address')->nullable();
+            $table->string('phone_number')->nullable();
             $table->timestamps();
         });
     }
