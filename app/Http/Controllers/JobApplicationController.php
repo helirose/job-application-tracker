@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
 use App\Models\JobApplication;
 
 class JobApplicationController extends Controller
@@ -10,7 +12,8 @@ class JobApplicationController extends Controller
     public function index()
     {
         $jobApplications = JobApplication::all();
-        return view('job_applications.index', $jobApplications);
+        return Inertia::render('jobApplications/Index', [
+            'jobApplications' => $jobApplications]);
     }
 
     public function create()
