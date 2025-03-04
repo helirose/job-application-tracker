@@ -33,4 +33,11 @@ export interface User {
     updated_at: string;
 }
 
+export interface JobApplication {
+    id: number;
+    job_title: string;
+    company_name: string;
+    status: string;
+}
+
 export type BreadcrumbItemType = BreadcrumbItem;

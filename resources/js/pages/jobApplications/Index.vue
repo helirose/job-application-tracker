@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import Sidebar from '@/components/Sidebar.vue';
 import { PropType } from 'vue';
-
-interface JobApplication {
-    id: number;
-    job_title: string;
-    company_name: string;
-    status: string;
-}
+import type { JobApplication } from '@/types';
 
 defineProps({
     jobApplications: Array as PropType<JobApplication[]>,
