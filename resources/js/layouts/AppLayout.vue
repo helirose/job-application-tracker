@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/app/AppSidebarLayout.vue';
-import type { BreadcrumbItemType } from '@/types';
+import Header from '@/components/Header.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import { ref } from 'vue';
 
-interface Props {
-    breadcrumbs?: BreadcrumbItemType[];
-}
+const isSidebarOpen = ref(false);
 
-withDefaults(defineProps<Props>(), {
-    breadcrumbs: () => [],
-});
+// Function to toggle the sidebar state
+const toggleSidebar = () => {
+    isSidebarOpen.value = !isSidebarOpen.value;
+};
 </script>
 
 <template>
-    <AppLayout :breadcrumbs="breadcrumbs">
+    <Sidebar :isOpen="isSidebarOpen" @open="isSidebarOpen = true" @close="isSidebarOpen = false" />
+    <Header @toggle-sidebar="toggleSidebar" />
+    <main class="p-5">
         <slot />
-    </AppLayout>
+    </main>
 </template>

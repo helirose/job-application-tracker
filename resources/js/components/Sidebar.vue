@@ -1,94 +1,67 @@
-<script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+<script setup lang="ts">
+import { X } from 'lucide-vue-next';
+import { defineEmits, defineProps, onMounted, onUnmounted } from 'vue';
 
-const isOpen = ref(false);
+const props = defineProps({
+    isOpen: Boolean,
+});
 let startX = 0; // Store initial touch position
 
-// Close on outside click
-// const handleClickOutside = (event) => {
-//   if (isOpen.value && sidebar.value && !sidebar.value.contains(event.target)) {
-//     isOpen.value = false;
-//   }
-// };
-
-const toggleSidebar = () => {
-  isOpen.value = !isOpen.value;
-  document.body.classList.toggle("overflow-hidden", isOpen.value); // Prevent scrolling when open
-};
+const emit = defineEmits(['close', 'open', 'isOpen']);
 
 // Detect swipe gesture
-const handleTouchStart = (event) => {
-  startX = event.touches[0].clientX;
+const handleTouchStart = (event: TouchEvent) => {
+    startX = event.touches[0].clientX;
 };
 
-const handleTouchEnd = (event) => {
-  let endX = event.changedTouches[0].clientX;
-  let diff = endX - startX;
+const handleTouchEnd = (event: TouchEvent) => {
+    const endX = event.changedTouches[0].clientX;
+    const diff = endX - startX;
 
-  // Swipe right (open) if starting near left edge and moving right
-  if (startX < 50 && diff > 50) {
-    isOpen.value = true;
-  }
+    // Swipe right (open) if starting near left edge and moving right
+    if (startX < 50 && diff > 50) {
+        emit('open');
+    }
 
-  // Swipe left (close) if sidebar is open
-  if (isOpen.value && diff < -50) {
-    isOpen.value = false;
-  }
+    // Swipe left (close) if sidebar is open
+    if (props.isOpen && diff < -50) {
+        emit('close');
+    }
 };
-
-// onMounted(() => {
-//   document.addEventListener("click", handleClickOutside);
-// });
-
-// onUnmounted(() => {
-//   document.removeEventListener("click", handleClickOutside);
-// });
 
 // Add swipe listeners when mounted
 onMounted(() => {
-  document.addEventListener("touchstart", handleTouchStart);
-  document.addEventListener("touchend", handleTouchEnd);
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
 });
 
 // Remove listeners when component unmounts
 onUnmounted(() => {
-  document.removeEventListener("touchstart", handleTouchStart);
-  document.removeEventListener("touchend", handleTouchEnd);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchend', handleTouchEnd);
 });
 </script>
 
 <template>
-  <div>
-    <!-- Mobile Toggle Button -->
-    <button 
-      @click="isOpen = true"
-      :class="[
-        'md:hidden p-2 bg-gray-800 text-white fixed top-2 left-2 z-50',
-        isOpen ? 'hidden' : 'block'
-        ]"
-      aria-label="Open sidebar"
-    >
-      ☰
-    </button>
-
-    <!-- Sidebar -->
-    <div 
-      id="sidebar"
-      ref="sidebar"
-      :class="[
-        'fixed md:relative top-0 left-0 w-screen h-screen md:w-[25vw] bg-gray-800 text-white transition-transform',
-        isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-      ]"
-    >
-      <div class="block md:hidden flex justify-end">
-        <button @click="isOpen = false" class="m-2 p-2 text-white rounded-2" aria-label="Close sidebar">✖</button>
-      </div>
-      <nav class="p-4">
-        <ul>
-          <li class="p-2 hover:bg-gray-700"><a href="#">Applications</a></li>
-          <li class="p-2 hover:bg-gray-700"><a href="#">Settings</a></li>
-        </ul>
-      </nav>
+    <div>
+        <!-- Sidebar -->
+        <div
+            id="sidebar"
+            ref="sidebar"
+            :class="[
+                'fixed left-0 top-0 h-screen w-screen bg-gray-800 text-white transition-transform md:relative md:w-[25vw]',
+                isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
+            ]"
+        >
+            <button @click="$emit('close')" :class="[!props.isOpen ? 'hidden' : 'block']" aria-label="Close sidebar">
+                <X class="h-6 w-6 text-gray-500" />
+            </button>
+            <nav class="p-4">
+                <ul>
+                    <li class="p-2 hover:bg-gray-700"><a href="#">Applications</a></li>
+                    <li class="p-2 hover:bg-gray-700"><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-  </div>
 </template>

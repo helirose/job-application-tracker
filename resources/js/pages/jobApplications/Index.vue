@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import Sidebar from '@/components/Sidebar.vue';
-import { PropType } from 'vue';
+import ApplicationItem from '@/components/ApplicationItem.vue';
+import UtilityBar from '@/components/UtilityBar.vue';
+import AppLayout from '@/layouts/AppLayout.vue';
 import type { JobApplication } from '@/types';
+import { PropType } from 'vue';
 
 defineProps({
     jobApplications: Array as PropType<JobApplication[]>,
@@ -9,11 +11,10 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex">
-        <Sidebar />
-        <main>
-            <h1>Applications</h1>
-            <div v-for="jobApplication in jobApplications" :key="jobApplication.id">Job: {{ jobApplication.job_title }}</div>
-        </main>
-    </div>
+    <AppLayout>
+        <UtilityBar />
+        <div>
+            <ApplicationItem v-for="jobApplication in jobApplications" :key="jobApplication.id" :job="jobApplication" />
+        </div>
+    </AppLayout>
 </template>

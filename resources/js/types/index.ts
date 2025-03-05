@@ -1,13 +1,8 @@
-import type { LucideIcon } from 'lucide-vue-next';
 import type { PageProps } from '@inertiajs/core';
+import type { LucideIcon } from 'lucide-vue-next';
 
 export interface Auth {
     user: User;
-}
-
-export interface BreadcrumbItem {
-    title: string;
-    href: string;
 }
 
 export interface NavItem {
@@ -37,7 +32,6 @@ export interface JobApplication {
     id: number;
     job_title: string;
     company_name: string;
+    date_applied: Date;
     status: string;
 }
-
-export type BreadcrumbItemType = BreadcrumbItem;
