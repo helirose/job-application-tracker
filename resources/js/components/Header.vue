@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="bg-gray-800">
+    <div class="bg-gray-800 w-full">
         <!-- Mobile Toggle Button -->
         <button
             @click="$emit('toggle-sidebar')"

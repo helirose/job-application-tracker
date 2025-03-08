@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next';
 import { defineEmits, defineProps, onMounted, onUnmounted } from 'vue';
+import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
     isOpen: Boolean,
@@ -43,25 +44,23 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div>
-        <!-- Sidebar -->
-        <div
-            id="sidebar"
-            ref="sidebar"
-            :class="[
-                'fixed left-0 top-0 h-screen w-screen bg-gray-800 text-white transition-transform md:relative md:w-[25vw]',
-                isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
-            ]"
-        >
-            <button @click="$emit('close')" :class="[!props.isOpen ? 'hidden' : 'block']" aria-label="Close sidebar">
-                <X class="h-6 w-6 text-gray-500" />
-            </button>
-            <nav class="p-4">
-                <ul>
-                    <li class="p-2 hover:bg-gray-700"><a href="#">Applications</a></li>
-                    <li class="p-2 hover:bg-gray-700"><a href="#">Settings</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+      <!-- Sidebar -->
+      <div
+          id="sidebar"
+          ref="sidebar"
+          :class="[
+              'fixed left-0 top-0 h-screen w-screen bg-gray-800 text-white transition-transform md:relative md:w-1/6',
+              isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
+          ]"
+      >
+          <button @click="$emit('close')" :class="[!props.isOpen ? 'hidden' : 'block']" aria-label="Close sidebar">
+              <X class="h-6 w-6 text-gray-500" />
+          </button>
+          <nav class="p-4">
+              <ul>
+                  <li class="p-2 hover:bg-gray-700"><Link href="/job-applications">Applications</Link></li>
+                  <li class="p-2 hover:bg-gray-700"><Link href="#">Settings</Link></li>
+              </ul>
+          </nav>
+      </div>
 </template>

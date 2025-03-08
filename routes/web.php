@@ -5,7 +5,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\JobApplicationController;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    return Inertia::render('Home');
 })->name('home');
 
 Route::get('dashboard', function () {
