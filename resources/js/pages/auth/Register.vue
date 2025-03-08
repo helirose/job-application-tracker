@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
+import AppLayout from '@/layouts/AppLayout.vue';
 
 const form = useForm({
     name: '',
@@ -17,61 +18,63 @@ const submit = () => {
 </script>
 
 <template>
-    <div title="Create an account" description="Enter your details below to create your account">
-        <Head title="Register" />
+    <AppLayout>
+        <div title="Create an account" description="Enter your details below to create your account">
+            <Head title="Register" />
 
-        <form @submit.prevent="submit" class="flex flex-col gap-6">
-            <div class="grid gap-6">
-                <div class="grid gap-2">
-                    <label for="name">Name</label>
-                    <input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.name" placeholder="Full name" />
-                    <span :message="form.errors.name" ></span>
+            <form @submit.prevent="submit" class="flex flex-col gap-6">
+                <div class="grid gap-6">
+                    <div class="grid gap-2">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.name" placeholder="Full name" />
+                        <span>{{ form.errors.name }}</span>
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label for="email">Email address</label>
+                        <input id="email" type="email" required :tabindex="2" autocomplete="email" v-model="form.email" placeholder="email@example.com" />
+                        <span>{{ form.errors.email }}</span>
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label for="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            required
+                            :tabindex="3"
+                            autocomplete="new-password"
+                            v-model="form.password"
+                            placeholder="Password"
+                        />
+                        <span>{{ form.errors.password }}</span>
+                    </div>
+
+                    <div class="grid gap-2">
+                        <label for="password_confirmation">Confirm password</label>
+                        <input
+                            id="password_confirmation"
+                            type="password"
+                            required
+                            :tabindex="4"
+                            autocomplete="new-password"
+                            v-model="form.password_confirmation"
+                            placeholder="Confirm password"
+                        />
+                        <span>{{ form.errors.password_confirmation }}</span>
+                    </div>
+
+                    <button type="submit" class="mt-2 w-full" tabindex="5" :disabled="form.processing">
+                        <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
+                        Create account
+                    </button>
                 </div>
 
-                <div class="grid gap-2">
-                    <label for="email">Email address</label>
-                    <input id="email" type="email" required :tabindex="2" autocomplete="email" v-model="form.email" placeholder="email@example.com" />
-                    <span :message="form.errors.email" ></span>
+                <div class="text-center text-sm text-muted-foreground">
+                    Already have an account?
+                    <a :href="route('login')" class="underline underline-offset-4" :tabindex="6">Log in</a>
                 </div>
-
-                <div class="grid gap-2">
-                    <label for="password">Password</label>
-                    <input
-                        id="password"
-                        type="password"
-                        required
-                        :tabindex="3"
-                        autocomplete="new-password"
-                        v-model="form.password"
-                        placeholder="Password"
-                    />
-                    <span :message="form.errors.password" ></span>
-                </div>
-
-                <div class="grid gap-2">
-                    <label for="password_confirmation">Confirm password</label>
-                    <input
-                        id="password_confirmation"
-                        type="password"
-                        required
-                        :tabindex="4"
-                        autocomplete="new-password"
-                        v-model="form.password_confirmation"
-                        placeholder="Confirm password"
-                    />
-                    <span :message="form.errors.password_confirmation"></span>
-                </div>
-
-                <button type="submit" class="mt-2 w-full" tabindex="5" :disabled="form.processing">
-                    <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
-                    Create account
-                </button>
-            </div>
-
-            <div class="text-center text-sm text-muted-foreground">
-                Already have an account?
-                <a :href="route('login')" class="underline underline-offset-4" :tabindex="6">Log in</a>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    </AppLayout>
 </template>

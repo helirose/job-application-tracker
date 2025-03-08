@@ -5,13 +5,6 @@ export interface Auth {
     user: User;
 }
 
-export interface NavItem {
-    title: string;
-    href: string;
-    icon?: LucideIcon;
-    isActive?: boolean;
-}
-
 export interface SharedData extends PageProps {
     name: string;
     quote: { message: string; author: string };
@@ -43,7 +36,7 @@ export interface JobApplication {
     notes?: string;
 }
 
-export interface ApplicationTimeline {
+export interface ApplicationEvent {
     id: number;
     job_application_id: number;
     status: string;

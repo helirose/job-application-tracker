@@ -18,6 +18,7 @@ Route::get('dashboard', function () {
 // ]);
 
 Route::get('/job-applications', [JobApplicationController::class, 'index']);
+Route::get('/job-applications/{id}', [JobApplicationController::class, 'show']);
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

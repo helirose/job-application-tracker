@@ -37,9 +37,8 @@ class JobApplicationController extends Controller
 
     public function show(string $id): View
     {
-        return view('job_applications.single', [
-            'job_application' => JobApplication::findOrFail($id)
-        ]);
+        return Inertia::render('jobApplications/{id}', [
+            'jobApplication' => JobApplication::findOrFail($id)]);
     }
 
     public function edit(string $id)

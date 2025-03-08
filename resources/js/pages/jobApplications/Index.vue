@@ -14,7 +14,7 @@ defineProps({
     <AppLayout>
         <UtilityBar />
         <div>
-            <ApplicationItem v-for="jobApplication in jobApplications" :key="jobApplication.id" :job="jobApplication" />
+            <ApplicationItem v-for="jobApplication in jobApplications" :key="jobApplication.id" :jobApplication="jobApplication" />
         </div>
     </AppLayout>
 </template>

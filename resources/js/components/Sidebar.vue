@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
+import { usePage, Link } from '@inertiajs/vue3';
 import { X } from 'lucide-vue-next';
-import { defineEmits, defineProps, onMounted, onUnmounted } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
-    isOpen: Boolean,
+    isOpen: Boolean
 });
+
+const page = usePage();
+const user = computed(() => page.props.auth.user);
+
 let startX = 0; // Store initial touch position
 
 const emit = defineEmits(['close', 'open', 'isOpen']);
@@ -58,8 +62,10 @@ onUnmounted(() => {
         </button>
         <nav class="p-4">
             <ul>
-                <li class="p-2 hover:bg-gray-700"><Link href="/job-applications">Applications</Link></li>
-                <li class="p-2 hover:bg-gray-700"><Link href="#">Settings</Link></li>
+                <li class="p-2 hover:bg-gray-700"><Link href="/">Home</Link></li>
+                <li v-if="user" class="p-2 hover:bg-gray-700"><Link href="/job-applications">My applications</Link></li>
+                <li v-if="!user" class="p-2 hover:bg-gray-700"><Link :href="route('login')">Login</Link></li>
+                <li v-if="user" class="p-2 hover:bg-gray-700"><Link :href="route('logout')" method="post">Logout</Link></li>
             </ul>
         </nav>
     </div>
