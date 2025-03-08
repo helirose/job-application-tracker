@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('job_title');
             $table->date('date_applied');
-            $table->enum('status', array_values(config('job-application.statuses')))->default(config('job-application.statuses.pending'));
+            $table->date('closing_date')->nullable();
+            $table->string('location')->nullable();
+            $table->integer('salary_min')->nullable();
+            $table->integer('salary_max')->nullable();
+            $table->string('salary_type')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });
