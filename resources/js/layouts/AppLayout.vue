@@ -12,10 +12,10 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-    <div class="flex">
+    <div class="flex flex-col md:flex-row">
         <Sidebar :isOpen="isSidebarOpen" @open="isSidebarOpen = true" @close="isSidebarOpen = false" />
         <Header @toggle-sidebar="toggleSidebar" />
-        <main class="w-full md:w-auto p-5">
+        <main class="w-full p-5">
             <slot />
         </main>
     </div>
