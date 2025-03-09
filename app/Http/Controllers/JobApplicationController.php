@@ -9,7 +9,7 @@ use App\Models\JobApplication;
 
 class JobApplicationController extends Controller
 {
-    public function index()
+    public function index() : Response
     {
         $jobApplications = JobApplication::all();
         return Inertia::render('jobApplications/Index', [
@@ -35,9 +35,9 @@ class JobApplicationController extends Controller
         return redirect()->route('job_applications.index');
     }
 
-    public function show(string $id): View
+    public function show(string $id) : Response
     {
-        return Inertia::render('jobApplications/{id}', [
+        return Inertia::render('jobApplications/Single', [
             'jobApplication' => JobApplication::findOrFail($id)]);
     }
 

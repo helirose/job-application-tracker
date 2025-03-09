@@ -12,9 +12,9 @@ defineProps({
 
 <template>
     <AppLayout>
-        <UtilityBar />
+        <UtilityBar class="mb-6" />
         <div>
-            <ApplicationItem v-for="jobApplication in jobApplications" :key="jobApplication.id" :jobApplication="jobApplication" />
+            <ApplicationItem class="mb-4" v-for="jobApplication in jobApplications" :key="jobApplication.id" :jobApplication="jobApplication" />
         </div>
     </AppLayout>
 </template>

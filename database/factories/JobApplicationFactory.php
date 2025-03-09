@@ -17,10 +17,11 @@ class JobApplicationFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => \App\Models\User::factory(),
             'company_name' => fake()->company(),
             'job_title' => fake()->jobTitle(),
-            'date_applied' => fake()->past('2 weeks'),
-            'closing_date' => fake()->future('2 weeks')->date(),
+            'date_applied' => fake()->dateTimeBetween('-2 weeks', 'now'),
+            'closing_date' => fake()->dateTimeBetween('now', '+2 weeks'),
             'location' => fake()->randomElement([
                 fake()->city(),
                 'Remote',

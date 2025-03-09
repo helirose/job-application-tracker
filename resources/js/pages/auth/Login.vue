@@ -44,7 +44,7 @@ const submit = () => {
                             v-model="form.email"
                             placeholder="email@example.com"
                         />
-                        <span :message="form.errors.email" ></span>
+                        <span>{{ form.errors.email }}</span>
                     </div>
 
                     <div class="grid gap-2">
