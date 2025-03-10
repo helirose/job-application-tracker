@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class JobApplication extends Model
@@ -30,7 +31,7 @@ class JobApplication extends Model
 
     public function applicationEvents() : HasMany
     {
-        return $this->hasMany(applicationEvent::class);
+        return $this->hasMany(ApplicationEvent::class);
     }
 
     public function latestEvent() : HasOne

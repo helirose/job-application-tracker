@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-md transition hover:shadow-lg"></div>
+    <div class="flex items-center justify-between rounded-lg bg-indigo-700 p-4 transition hover:shadow-lg">
+        <input name="search">
+    </div>
 </template>

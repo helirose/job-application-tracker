@@ -53,7 +53,7 @@ onUnmounted(() => {
         id="sidebar"
         ref="sidebar"
         :class="[
-            'fixed left-0 top-0 h-screen w-screen bg-gray-800 text-white transition-transform md:relative md:block md:w-1/5',
+            'fixed left-0 top-0 h-screen w-screen bg-indigo-900 text-white transition-transform md:relative md:block md:w-1/5',
             isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
         ]"
     >

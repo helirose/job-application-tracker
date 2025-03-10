@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-md transition hover:shadow-lg">
+    <div class="flex flex-col items-center justify-between bg-white p-4 transition mb-4 border border-indigo-700 border-opacity-50 rounded-md">
         <h3 class="w-full text-lg font-semibold text-gray-900">
             <Link :href="route('jobApplication.show', { id: jobApplication.id })">
                 {{ jobApplication.job_title }} at {{ jobApplication.company_name }}
