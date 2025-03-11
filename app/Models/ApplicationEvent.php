@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicationEvent extends Model
 {
     protected $fillable = [
+        'status',
+        'created_at'
     ];
 
     public function jobApplication() : BelongsTo

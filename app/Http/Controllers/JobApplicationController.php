@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\JobApplication;
+use App\Models\ApplicationEvent;
 
 class JobApplicationController extends Controller
 {
     public function index() : Response
     {   
-        $jobApplications = JobApplication::with('latestEvent')->get()->map(function ($jobApplication) {
-            $jobApplication->latest_event = $jobApplication->latest_event ?? ['status' => 'Initiated', 'created_at' => now()];
-            return $jobApplication;
-        });
+        $jobApplications = JobApplication::with('latestEvent')->get();
+        
+        dd($jobApplications);
 
         return Inertia::render('jobApplications/Index', [
             'jobApplications' => $jobApplications]);

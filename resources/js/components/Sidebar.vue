@@ -62,10 +62,10 @@ onUnmounted(() => {
         </button>
         <nav class="p-4">
             <ul>
-                <li class="p-2 hover:bg-gray-700"><Link href="/">Home</Link></li>
-                <li v-if="user" class="p-2 hover:bg-gray-700"><Link href="/job-applications">My applications</Link></li>
-                <li v-if="!user" class="p-2 hover:bg-gray-700"><Link :href="route('login')">Login</Link></li>
-                <li v-if="user" class="p-2 hover:bg-gray-700"><Link :href="route('logout')" method="post">Logout</Link></li>
+                <li class="p-2"><Link href="/">Home</Link></li>
+                <li v-if="user" class="p-2"><Link href="/job-applications">My applications</Link></li>
+                <li v-if="!user" class="p-2"><Link :href="route('login')">Login</Link></li>
+                <li v-if="user" class="p-2"><Link :href="route('logout')" method="post">Logout</Link></li>
             </ul>
         </nav>
     </div>

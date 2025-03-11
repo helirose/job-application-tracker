@@ -34,7 +34,6 @@ export interface JobApplication {
     salary_type?: 'hourly' | 'annual';
     contact_id?: number;
     notes?: string;
-    latest_event?: ApplicationEvent;
 }
 
 export interface ApplicationEvent {
