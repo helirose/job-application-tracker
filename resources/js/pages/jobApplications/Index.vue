@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ApplicationItem from '@/components/ApplicationItem.vue';
+import ApplicationsList from '@/components/ApplicationsList.vue';
 import UtilityBar from '@/components/UtilityBar.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { JobApplication } from '@/types';
@@ -13,8 +13,6 @@ defineProps({
 <template>
     <AppLayout>
         <UtilityBar class="mb-6" />
-        <div>
-            <ApplicationItem v-for="jobApplication in jobApplications" :key="jobApplication.id" :jobApplication="jobApplication" />
-        </div>
+        <ApplicationsList :jobApplications="jobApplications" />
     </AppLayout>
 </template>

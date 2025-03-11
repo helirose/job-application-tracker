@@ -9,6 +9,6 @@ const props = defineProps<{
 
 <template>
     <div v-for="event in events">
-        {{ event.status }}
+        {{ event }}
     </div>
 </template>

@@ -10,8 +10,12 @@ use App\Models\JobApplication;
 class JobApplicationController extends Controller
 {
     public function index() : Response
-    {
-        $jobApplications = JobApplication::all();
+    {   
+        $jobApplications = JobApplication::with('latestEvent')->get()->map(function ($jobApplication) {
+            $jobApplication->latest_event = $jobApplication->latest_event ?? ['status' => 'Initiated', 'created_at' => now()];
+            return $jobApplication;
+        });
+
         return Inertia::render('jobApplications/Index', [
             'jobApplications' => $jobApplications]);
     }
