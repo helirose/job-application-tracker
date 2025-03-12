@@ -12,12 +12,18 @@ const props = defineProps<{
 
 <template>
     <AppLayout>
-        <div class="mb-6">
-            <p class="text-md">Your application for</p>
+        <div class="application-header pb-6 mb-6">
+            <p class="text-lg">Your application for</p>
             <h1 class="my-2 mt-0 text-4xl font-semibold text-indigo-900">{{ jobApplication.job_title }}</h1>
-            <p class="text-md">
+            <p class="text-lg">
                 at <span class="font-semibold text-indigo-600">{{ jobApplication.company_name }}</span>
             </p>
+            <div class="my-6 pl-4 border-l-4 border-indigo-900">
+                <p>Contact:
+                {{ jobApplication?.contact_id }}
+                </p>
+                <p>Salary: From {{ jobApplication.salary_min }} to {{ jobApplication.salary_max }}</p>
+            </div>
         </div>
         <Timeline :events="applicationEvents" />
         <Documents />
