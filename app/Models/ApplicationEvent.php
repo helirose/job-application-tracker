@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicationEvent extends Model
 {
     protected $fillable = [
+        'job_application_id',
         'status',
         'created_at'
     ];

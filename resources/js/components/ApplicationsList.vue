@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import type { JobApplication } from '@/types';
-import { PropType } from 'vue';
 import ApplicationItem from '@/components/ApplicationItem.vue';
 import ListBar from '@/components/ListBar.vue';
+import type { JobApplication } from '@/types';
+import { PropType } from 'vue';
 
 defineProps({
     jobApplications: Array as PropType<JobApplication[]>,

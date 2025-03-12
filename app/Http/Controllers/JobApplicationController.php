@@ -14,7 +14,7 @@ class JobApplicationController extends Controller
     {   
         $jobApplications = JobApplication::with('latestEvent')->get();
         
-        dd($jobApplications);
+        //dd($jobApplications);
 
         return Inertia::render('jobApplications/Index', [
             'jobApplications' => $jobApplications]);

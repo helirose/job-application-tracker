@@ -1,5 +1,4 @@
 import type { PageProps } from '@inertiajs/core';
-import type { LucideIcon } from 'lucide-vue-next';
 
 export interface Auth {
     user: User;
@@ -34,6 +33,7 @@ export interface JobApplication {
     salary_type?: 'hourly' | 'annual';
     contact_id?: number;
     notes?: string;
+    latest_event?: ApplicationEvent;
 }
 
 export interface ApplicationEvent {
