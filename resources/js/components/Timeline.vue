@@ -10,28 +10,9 @@ defineProps({
 </script>
 
 <template>
+    <button class="bg-indigo-900 p-2 text-white">Update Status</button>
     <div class="m-4">
         <ul class="timeline relative" v-for="event in events" :key="event.id">
-            <li class="flex">
-                <span class="timeline-icon mr-4"><CircleChevronDown class="bg-white text-indigo-900" /></span>
-                {{ event.status }} <br />{{ formatDate(event.created_at) }}
-            </li>
-            <li class="flex">
-                <span class="timeline-icon mr-4"><CircleChevronDown class="bg-white text-indigo-900" /></span>
-                {{ event.status }} <br />{{ formatDate(event.created_at) }}
-            </li>
-            <li class="flex">
-                <span class="timeline-icon mr-4"><CircleChevronDown class="bg-white text-indigo-900" /></span>
-                {{ event.status }} <br />{{ formatDate(event.created_at) }}
-            </li>
-            <li class="flex">
-                <span class="timeline-icon mr-4"><CircleChevronDown class="bg-white text-indigo-900" /></span>
-                {{ event.status }} <br />{{ formatDate(event.created_at) }}
-            </li>
-            <li class="flex">
-                <span class="timeline-icon mr-4"><CircleChevronDown class="bg-white text-indigo-900" /></span>
-                {{ event.status }} <br />{{ formatDate(event.created_at) }}
-            </li>
             <li class="flex">
                 <span class="timeline-icon mr-4"><CircleChevronDown class="bg-white text-indigo-900" /></span>
                 {{ event.status }} <br />{{ formatDate(event.created_at) }}
@@ -42,7 +23,7 @@ defineProps({
 
 <style scoped>
 .timeline-icon {
-    z-index: 999;
+    z-index: 998;
     position: relative;
     width: 22px;
     height: 22px;

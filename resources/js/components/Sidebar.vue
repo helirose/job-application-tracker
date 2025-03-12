@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { usePage, Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { X } from 'lucide-vue-next';
 import { computed, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
-    isOpen: Boolean
+    isOpen: Boolean,
 });
 
 const page = usePage();
@@ -53,7 +53,7 @@ onUnmounted(() => {
         id="sidebar"
         ref="sidebar"
         :class="[
-            'fixed left-0 top-0 h-screen w-screen bg-indigo-900 text-white transition-transform md:relative md:block md:w-1/5',
+            'sidebar fixed left-0 top-0 h-screen w-screen bg-indigo-900 text-white transition-transform md:relative md:block md:w-1/5',
             isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
         ]"
     >
@@ -70,3 +70,9 @@ onUnmounted(() => {
         </nav>
     </div>
 </template>
+
+<style scoped>
+.sidebar {
+    z-index: 999;
+}
+</style>
