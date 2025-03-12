@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Status from '@/components/Status.vue';
+import { formatDate } from '@/lib/utils';
 import type { JobApplication } from '@/types';
 import { Link } from '@inertiajs/vue3';
 
@@ -12,7 +13,7 @@ console.log(props.jobApplication);
 
 <template>
     <div
-        class="my-4 flex flex-col justify-between border-b border-indigo-700 border-opacity-50 bg-white p-4 transition md:grid md:grid-cols-4 md:flex-row"
+        class="my-4 flex flex-col justify-between border-b border-indigo-700 border-opacity-50 bg-white p-4 transition md:grid md:grid-cols-4 md:flex-row md:gap-x-4"
     >
         <div class="w-full">
             <Status v-if="jobApplication.latest_event" :event="jobApplication.latest_event" />
@@ -22,7 +23,9 @@ console.log(props.jobApplication);
                 {{ jobApplication.job_title }} at {{ jobApplication.company_name }}
             </Link>
         </h3>
-        <p class="w-full text-gray-600 md:w-auto"><span class="md:hidden">Applied: </span>{{ jobApplication.date_applied }}</p>
-        <p class="w-full text-gray-600 md:w-auto"><span class="md:hidden">Closing: </span>{{ jobApplication.closing_date }}</p>
+        <p class="w-full text-gray-600 md:w-auto"><span class="md:hidden">Applied: </span>{{ formatDate(jobApplication.date_applied) }}</p>
+        <p class="w-full text-gray-600 md:w-auto">
+            <span class="md:hidden">Closing: </span>{{ jobApplication.closing_date ? formatDate(jobApplication.closing_date) : '' }}
+        </p>
     </div>
 </template>

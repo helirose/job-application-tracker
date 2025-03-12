@@ -1,13 +1,9 @@
 <script setup lang="ts">
-
-const props = defineProps<{
-    status: string;
-}>();
-
+// const props = defineProps<{
+//     status: string;
+// }>();
 </script>
 
 <template>
-    <div>
-        {{ status }}
-    </div>
+    <div>Details</div>
 </template>
