@@ -24,9 +24,9 @@ class JobApplicationController extends Controller
         ]);
     }
 
-    public function create()
+    public function create() : Response
     {
-        return view('job_applications.create');
+        return Inertia::render('jobApplications/New');
     }
 
     public function store(Request $request)

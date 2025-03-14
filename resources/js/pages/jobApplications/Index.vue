@@ -11,7 +11,8 @@ defineProps({
         required: true
     },
     statuses: {
-        type: Array<string>
+        type: Array<string>,
+        required: true
     }
 });
 </script>
