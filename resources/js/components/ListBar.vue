@@ -3,17 +3,17 @@ import { ChevronDown } from 'lucide-vue-next';
 </script>
 
 <template>
-    <div class="flex hidden items-center justify-between rounded-t-md bg-indigo-200 p-4 text-left md:block md:grid md:grid-cols-4 md:gap-x-4">
-        <div>
+    <div class="items-left flex hidden justify-between rounded-t-lg bg-indigo-200 p-4 md:block md:grid md:grid-cols-12 md:gap-8">
+        <div class="md:col-span-2">
             <button class="font-semibold text-indigo-900">Status <ChevronDown class="inline" /></button>
         </div>
-        <div>
+        <div class="md:col-span-6">
             <button class="font-semibold text-indigo-900">Position <ChevronDown class="inline" /></button>
         </div>
-        <div>
+        <div class="md:col-span-2">
             <button class="font-semibold text-indigo-900">Date Applied <ChevronDown class="inline" /></button>
         </div>
-        <div>
+        <div class="md:col-span-2">
             <button class="font-semibold text-indigo-900">Date Closing <ChevronDown class="inline" /></button>
         </div>
     </div>

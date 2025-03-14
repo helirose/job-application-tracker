@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { X } from 'lucide-vue-next';
+import { Copyright, X } from 'lucide-vue-next';
 import { computed, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
@@ -53,21 +53,29 @@ onUnmounted(() => {
         id="sidebar"
         ref="sidebar"
         :class="[
-            'sidebar fixed left-0 top-0 h-screen w-screen bg-indigo-900 text-white transition-transform md:relative md:block md:w-1/5',
+            'sidebar fixed left-0 top-0 h-screen w-screen bg-indigo-900 text-white transition-transform md:relative md:flex md:h-auto md:w-1/5',
             isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0',
         ]"
     >
-        <button @click="$emit('close')" :class="[!props.isOpen ? 'hidden' : 'block']" aria-label="Close sidebar">
-            <X class="h-6 w-6 text-gray-500" />
-        </button>
-        <nav class="p-4">
-            <ul>
-                <li class="p-2"><Link href="/">Home</Link></li>
-                <li v-if="user" class="p-2"><Link href="/job-applications">My applications</Link></li>
-                <li v-if="!user" class="p-2"><Link :href="route('login')">Login</Link></li>
-                <li v-if="user" class="p-2"><Link :href="route('logout')" method="post">Logout</Link></li>
-            </ul>
-        </nav>
+        <div class="flex flex-wrap items-start">
+            <nav class="flex-grow p-4">
+                <ul>
+                    <li class="py-2"><Link href="/">Home</Link></li>
+                    <li class="py-2"><Link href="/">Resources</Link></li>
+                    <Divider />
+                    <li v-if="user" class="py-2"><Link href="/job-applications">My applications</Link></li>
+                    <li v-if="user" class="py-2"><Link href="/contacts">My contacts</Link></li>
+                    <li v-if="!user" class="py-2"><Link :href="route('login')">Login</Link></li>
+                    <li v-if="user" class="py-2"><Link :href="route('logout')" method="post">Logout</Link></li>
+                </ul>
+            </nav>
+            <button class="flex-none p-4" @click="$emit('close')" :class="[!props.isOpen ? 'hidden' : 'block']" aria-label="Close sidebar">
+                <X class="m-2 text-white" />
+            </button>
+            <div class="justify-left flex w-full items-center self-end p-4">
+                <span class="flex items-center text-sm"><Copyright class="h-4" /> Charlotte Rees 2025</span>
+            </div>
+        </div>
     </div>
 </template>
 

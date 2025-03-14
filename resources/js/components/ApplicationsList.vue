@@ -5,11 +5,22 @@ import type { JobApplication } from '@/types';
 import { PropType } from 'vue';
 
 defineProps({
-    jobApplications: Array as PropType<JobApplication[]>,
+    jobApplications: {
+        type: Array as PropType<JobApplication[]>,
+        required: true,
+    },
 });
 </script>
 
 <template>
-    <ListBar />
-    <ApplicationItem v-for="jobApplication in jobApplications" :key="jobApplication.id" :jobApplication="jobApplication" />
+    <div class="rounded-lg border border-indigo-900 shadow-md">
+        <ListBar />
+        <ApplicationItem
+            v-for="(jobApplication, index) in jobApplications"
+            :key="jobApplication.id"
+            :jobApplication="jobApplication"
+            :index="index"
+            :length="jobApplications.length"
+        />
+    </div>
 </template>

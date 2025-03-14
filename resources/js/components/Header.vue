@@ -12,7 +12,7 @@ const props = defineProps({
         <!-- Mobile Toggle Button -->
         <button
             @click="$emit('toggle-sidebar')"
-            :class="['block bg-gray-800 p-2 text-white md:hidden', props.isOpen ? 'hidden' : 'block']"
+            :class="['block p-2 text-white md:hidden', props.isOpen ? 'hidden' : 'block']"
             aria-label="Open sidebar"
         >
             <Menu />
