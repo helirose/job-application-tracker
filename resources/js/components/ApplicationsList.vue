@@ -9,6 +9,10 @@ defineProps({
         type: Array as PropType<JobApplication[]>,
         required: true,
     },
+    statuses: {
+        type: Array<string>,
+        required: true,
+    }
 });
 </script>
 
@@ -21,6 +25,7 @@ defineProps({
             :jobApplication="jobApplication"
             :index="index"
             :length="jobApplications.length"
+            :statuses="statuses"
         />
     </div>
 </template>

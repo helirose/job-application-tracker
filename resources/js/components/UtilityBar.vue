@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import Search from './ui/Search.vue';
+import Button from '@/components/ui/Button.vue';
+import Search from '@/components/ui/Search.vue';
 </script>
 
 <template>
-    <div class="flex items-center justify-between rounded-lg">
+    <div class="flex items-stretch justify-start gap-2 rounded-lg">
         <Search />
+        <Button :icon='"plus"' :label='"New application"' />
     </div>
 </template>

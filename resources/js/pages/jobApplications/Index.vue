@@ -6,13 +6,19 @@ import type { JobApplication } from '@/types';
 import { PropType } from 'vue';
 
 defineProps({
-    jobApplications: Array as PropType<JobApplication[]>,
+    jobApplications: {
+        type: Array as PropType<JobApplication[]>,
+        required: true
+    },
+    statuses: {
+        type: Array<string>
+    }
 });
 </script>
 
 <template>
     <AppLayout>
         <UtilityBar class="mb-6" />
-        <ApplicationsList :jobApplications="jobApplications" />
+        <ApplicationsList :jobApplications="jobApplications" :statuses="statuses" />
     </AppLayout>
 </template>

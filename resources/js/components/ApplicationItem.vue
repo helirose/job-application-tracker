@@ -8,6 +8,7 @@ defineProps<{
     jobApplication: JobApplication;
     index: number;
     length: number;
+    statuses: Array<string>;
 }>();
 </script>
 
@@ -21,13 +22,14 @@ defineProps<{
         ]"
     >
         <div class="w-full md:col-span-2">
-            <Status v-if="jobApplication.latest_event" :event="jobApplication.latest_event" />
+            <Status v-if="jobApplication.latest_event" :event="jobApplication.latest_event" :statuses="statuses"/>
         </div>
         <div class="md:col-span-6">
-            <h3 class="w-full text-lg font-semibold text-gray-900 md:w-auto">
-                <Link :href="route('jobApplication.show', { id: jobApplication.id })">
-                    {{ jobApplication.job_title }} at {{ jobApplication.company_name }}
+            <h3 class="w-full text-lg text-gray-900 md:w-auto">
+                <Link class="w-full font-semibold hover:text-indigo-600" :href="route('jobApplication.show', { id: jobApplication.id })">
+                    <span class="mb-4 border-b border-indigo-900">{{ jobApplication.job_title }}</span>
                 </Link>
+                at <span class="text-indigo-600">{{ jobApplication.company_name }}</span>
             </h3>
         </div>
         <div class="md:col-span-2">

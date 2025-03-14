@@ -2,12 +2,16 @@
 import { ApplicationEvent } from '@/types';
 
 const props = defineProps<{
-    event: ApplicationEvent;
+    event: ApplicationEvent,
+    statuses: Array<string>
 }>();
+
 </script>
 
 <template>
-    <span class="rounded-md bg-indigo-700 p-2 text-white">
-        {{ event.status }}
-    </span>
+    <select class="text-wrap rounded-md bg-indigo-700 p-2 text-white w-full" name="status" id="status">
+        <option v-for="status in statuses" :value="status" class="block text-wrap p-4"
+        :selected="event.status == status"
+        >{{ status }}</option>
+    </select>
 </template>

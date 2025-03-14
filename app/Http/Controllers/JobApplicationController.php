@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\JobApplication;
 use App\Models\ApplicationEvent;
+use App\Models\CustomStatus;
 
 class JobApplicationController extends Controller
 {
     public function index() : Response
     {   
         $jobApplications = JobApplication::with('latestEvent')->get();
-        
-        //dd($jobApplications);
+        $customStatuses = Auth::user()->customStatuses->pluck('status')->toArray();
+        $statuses = array_merge(config('job-application.stages'), $customStatuses);
 
         return Inertia::render('jobApplications/Index', [
-            'jobApplications' => $jobApplications]);
+            'jobApplications' => $jobApplications,
+            'statuses' => $statuses
+        ]);
     }
 
     public function create()
