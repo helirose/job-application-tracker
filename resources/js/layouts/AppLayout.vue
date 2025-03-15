@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from '@/components/Header.vue';
 import Sidebar from '@/components/Sidebar.vue';
+import { BreadcrumbItemType } from '@/types';
 import { ref } from 'vue';
 
 const isSidebarOpen = ref(false);
@@ -9,6 +10,16 @@ const isSidebarOpen = ref(false);
 const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
 };
+
+// TypeScript interface to define the expected structure of props
+interface Props {
+    breadcrumbs?: BreadcrumbItemType[]; // breadcrumbs prop, an optional array of BreadcrumbItemType
+}
+
+// Use withDefaults to provide a default value for breadcrumbs if none is passed in
+withDefaults(defineProps<Props>(), {
+    breadcrumbs: () => [], // Default value is an empty array
+});
 </script>
 
 <template>

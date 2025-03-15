@@ -13,8 +13,8 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/job-applications', [JobApplicationController::class, 'index'])->name('jobApplications.index');
-Route::get('/job-applications/{id}', [JobApplicationController::class, 'show'])->name('jobApplication.show');
 Route::get('/job-applications/create', [JobApplicationController::class, 'create'])->name('jobApplication.create');
+Route::get('/job-applications/{id}', [JobApplicationController::class, 'show'])->name('jobApplication.show');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

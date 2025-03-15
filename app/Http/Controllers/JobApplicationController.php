@@ -16,7 +16,7 @@ class JobApplicationController extends Controller
     {   
         $jobApplications = JobApplication::with('latestEvent')->get();
         $customStatuses = Auth::user()->customStatuses->pluck('status')->toArray();
-        $statuses = array_merge(config('job-application.stages'), $customStatuses);
+        $statuses = array_values(array_merge(config('job-application.stages'), $customStatuses));
 
         return Inertia::render('jobApplications/Index', [
             'jobApplications' => $jobApplications,

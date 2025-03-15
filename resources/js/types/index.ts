@@ -10,6 +10,11 @@ export interface SharedData extends PageProps {
     auth: Auth;
 }
 
+export interface BreadcrumbItem {
+    title: string;
+    href: string;
+}
+
 export interface User {
     id: number;
     name: string;
@@ -74,3 +79,5 @@ export interface Agency {
     created_at: string;
     updated_at: string;
 }
+
+export type BreadcrumbItemType = BreadcrumbItem;

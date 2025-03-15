@@ -8,12 +8,12 @@ import { PropType } from 'vue';
 defineProps({
     jobApplications: {
         type: Array as PropType<JobApplication[]>,
-        required: true
+        required: true,
     },
     statuses: {
-        type: Array<string>,
-        required: true
-    }
+        type: Array as PropType<string[]>,
+        required: true,
+    },
 });
 </script>
 

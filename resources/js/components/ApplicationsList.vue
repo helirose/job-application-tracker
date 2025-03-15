@@ -10,9 +10,9 @@ defineProps({
         required: true,
     },
     statuses: {
-        type: Array<string>,
+        type: Array as PropType<string[]>,
         required: true,
-    }
+    },
 });
 </script>
 

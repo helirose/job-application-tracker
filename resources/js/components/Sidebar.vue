@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Divider from '@/components/ui/Divider.vue';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Copyright, X } from 'lucide-vue-next';
 import { computed, onMounted, onUnmounted } from 'vue';
@@ -66,6 +67,7 @@ onUnmounted(() => {
                     <li v-if="user" class="py-2"><Link href="/job-applications">My applications</Link></li>
                     <li v-if="user" class="py-2"><Link href="/contacts">My contacts</Link></li>
                     <li v-if="!user" class="py-2"><Link :href="route('login')">Login</Link></li>
+                    <li v-if="user" class="py-2"><Link :href="route('dashboard')">Account</Link></li>
                     <li v-if="user" class="py-2"><Link :href="route('logout')" method="post">Logout</Link></li>
                 </ul>
             </nav>

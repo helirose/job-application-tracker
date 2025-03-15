@@ -22,7 +22,7 @@ defineProps<{
         ]"
     >
         <div class="w-full md:col-span-2">
-            <Status v-if="jobApplication.latest_event" :event="jobApplication.latest_event" :statuses="statuses"/>
+            <Status v-if="jobApplication.latest_event" :event="jobApplication.latest_event" :statuses="statuses" />
         </div>
         <div class="md:col-span-6">
             <h3 class="w-full text-lg text-gray-900 md:w-auto">
